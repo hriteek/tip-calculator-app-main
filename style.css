@@ -1,0 +1,273 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --wd-mobile: 375px;
+  /* --wd-desktop: 1440px; */
+  --wd-desktop: 1080px;
+
+  --clr-strong-cyan: hsl(172, 67%, 45%);
+  --clr-very-dark-cyan: hsl(183, 100%, 15%);
+  --clr-dark-grayish-cyan-100: hsl(184, 14%, 56%);
+  --clr-dark-grayish-cyan-300: hsl(186, 14%, 43%);
+  --clr-light-grayish-cyan-100: hsl(189, 41%, 97%);
+  --clr-light-grayish-cyan-300: hsl(185, 41%, 84%);
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-gray: hsl(0, 0%, 41%);
+}
+
+html {
+  font-family: 'Space Mono', monospace;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.8rem;
+  background: var(--clr-dark-grayish-cyan-100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1,
+h2,
+h3 {
+  margin-bottom: 0.4em;
+}
+
+input,
+.btn {
+  font-size: 2.4rem;
+}
+input {
+  background: var(--clr-light-grayish-cyan-100);
+  outline: none;
+  border: none;
+  border-radius: 0.4em;
+  height: 6vh;
+  width: 100%;
+}
+
+.container {
+  width: min(var(--wd-mobile), 70%);
+  margin: 0 auto;
+}
+
+.title {
+  text-transform: uppercase;
+  letter-spacing: 1.5rem;
+  width: 16ch;
+  margin: 2.5em auto;
+  text-align: center;
+}
+
+.title h1 {
+  word-break: break-all;
+  color: var(--clr-dark-grayish-cyan-300);
+}
+
+section {
+  background: var(--clr-white);
+  border-radius: 1.5em 1.5em 0 0;
+  /* border-radius: 1.5em; */
+  padding: 2em;
+  color: var(--clr-gray);
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.section--left > input {
+  margin-bottom: 1.5em;
+}
+
+.section__tip {
+  margin-bottom: 1.5em;
+}
+
+.section__tip > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+#tipSelect > * {
+  flex: 0 1 47%;
+}
+
+.section__tip input {
+  width: 47%;
+}
+
+.btn {
+  padding: 0.4em 1.2em;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 0.4em;
+}
+
+.btn--tip {
+  width: 47%;
+  background: var(--clr-very-dark-cyan);
+  color: var(--clr-white);
+}
+
+.btn--custom {
+  cursor: text;
+  background: var(--clr-light-grayish-cyan-100);
+  height: initial;
+}
+
+.btn--custom::placeholder {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.btn.active {
+  background: var(--clr-strong-cyan);
+  color: var(--clr-dark-grayish-cyan-300);
+}
+
+.btn--reset {
+  width: 100%;
+  margin-block: 1em;
+  background: var(--clr-strong-cyan);
+  color: var(--clr-very-dark-cyan);
+}
+
+.section__right {
+  background: var(--clr-very-dark-cyan);
+  border-radius: 1.5em;
+  padding: 2em 1.5em;
+  color: var(--clr-white);
+}
+
+.section__right span {
+  display: block;
+  font-size: 1.8rem;
+  color: var(--clr-light-grayish-cyan-300);
+}
+
+.section__bill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section__bill + .section__bill {
+  margin-top: 1em;
+}
+
+.section__bill .price {
+  font-size: 2.5rem;
+  color: var(--clr-strong-cyan);
+}
+
+@media screen and (min-width: 72em) {
+  .container {
+    width: min(var(--wd-desktop), 60%);
+  }
+
+  section {
+    flex-direction: row;
+    border-radius: 1.5em;
+    gap: 2em;
+  }
+
+  section > * {
+    flex-basis: 100%;
+  }
+
+  .section__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5em;
+  }
+
+  .btn--tip {
+    width: 30%;
+  }
+
+  .section__tip input {
+    width: 30%;
+  }
+
+  #tipSelect > * {
+    flex: 0 1 30%;
+  }
+}
