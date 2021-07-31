@@ -1,5 +1,8 @@
-// variable 
-let totalBill, customTip, selectTip, noOfPeople;
+// variable
+let totalBill = 0,
+  customTip = 0,
+  selectTip = 0,
+  noOfPeople = 1;
 let totalPerPerson = 0.0,
   tipPerPerson = 0.0;
 
@@ -37,12 +40,15 @@ function getTotalPeopleNumber(e) {
 }
 
 function CalculateTotalPerPerson(total_bill, no_of_people = 1, tip = 0) {
-  totalPerPerson = parseInt(total_bill) / parseInt(no_of_people);
+  totalPerPerson = (parseInt(total_bill) / parseInt(no_of_people)).toFixed(2);
 }
 
 function CalculateTipPerPerson(total_bill, no_of_people = 1, tip = 0) {
-  tipPerPerson =
-    (parseInt(total_bill) * parseInt(tip)) / 100 / parseInt(no_of_people);
+  tipPerPerson = (
+    (parseInt(total_bill) * parseInt(tip)) /
+    100 /
+    parseInt(no_of_people)
+  ).toFixed(2);
 }
 
 function resetSelect() {
@@ -52,10 +58,8 @@ function resetSelect() {
 }
 
 function getCalculation(e, value = false) {
-  console.log('getCalculation', value);
   if (value) {
-    console.log('getCalculation', value);
-    let tip = customTip !== undefined ? customTip : selectTip;
+    let tip = customTip ? customTip : selectTip;
     console.log(totalBill, noOfPeople, tip);
     CalculateTotalPerPerson(totalBill, noOfPeople, tip);
     CalculateTipPerPerson(totalBill, noOfPeople, tip);
