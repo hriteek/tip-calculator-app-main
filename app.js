@@ -21,12 +21,14 @@ tipOutput.innerHTML = '$' + tipPerPerson;
 function getTotalBill(e) {
   billInput.innerHTML = e.target.value;
   totalBill = billInput.value;
+  getCalculation(e, true);
 }
 
 function getTotalCustomTip(e) {
   resetSelect();
   customInput.innerHTML = e.target.value;
   customTip = customInput.value;
+  getCalculation(e, true);
 }
 
 function clearTotalCustomTip(e) {
@@ -37,6 +39,7 @@ function clearTotalCustomTip(e) {
 function getTotalPeopleNumber(e) {
   peopleInput.innerHTML = e.target.value;
   noOfPeople = peopleInput.value;
+  getCalculation(e, true);
 }
 
 function CalculateTotalPerPerson(total_bill, no_of_people = 1, tip = 0) {
@@ -60,21 +63,17 @@ function resetSelect() {
 function getCalculation(e, value = false) {
   if (value) {
     let tip = customTip ? customTip : selectTip;
-    console.log(totalBill, noOfPeople, tip);
     CalculateTotalPerPerson(totalBill, noOfPeople, tip);
     CalculateTipPerPerson(totalBill, noOfPeople, tip);
-    console.log('totalPerPerson', totalPerPerson);
-    console.log('tipPerPerson', tipPerPerson);
     totalOutput.innerHTML = '$' + totalPerPerson;
     tipOutput.innerHTML = '$' + tipPerPerson;
   }
 }
 
 function handleSelect() {
-  const btnClick = function () {
+  const btnClick = function (e) {
     clearTotalCustomTip();
     selectTip = parseInt(this.innerHTML.replace('%', ''));
-    console.log(selectTip);
     if (this.parentNode.getElementsByClassName('active')[0]) {
       this.parentNode
         .getElementsByClassName('active')[0]
@@ -83,6 +82,7 @@ function handleSelect() {
     } else {
       this.classList.add('active');
     }
+    getCalculation(e, true);
   };
   document
     .querySelectorAll('.btn--tip')
@@ -94,22 +94,8 @@ window.onload = handleSelect;
 billInput.addEventListener('input', getTotalBill);
 customInput.addEventListener('input', getTotalCustomTip);
 peopleInput.addEventListener('input', getTotalPeopleNumber);
-peopleInput.addEventListener('input', getTotalPeopleNumber);
-peopleInput.addEventListener('click', getCalculation);
-peopleInput.addEventListener('keyup', (e) => {
-  if (e.keyCode === 13 && totalBill && (customTip || selectTip) && noOfPeople) {
-    console.log('I am enter');
-    e.preventDefault();
-    getCalculation(e, true);
-  }
-});
-
-billInput.addEventListener('onchange', (data) => {
-  console.log('data', data);
-});
 
 resetButton.addEventListener('click', () => {
-  console.log('reset button clicked');
   totalPerPerson = 0.0;
   tipPerPerson = 0.0;
   totalOutput.innerHTML = '$' + totalPerPerson;
@@ -117,5 +103,12 @@ resetButton.addEventListener('click', () => {
   billInput.value = '';
   customInput.value = '';
   peopleInput.value = '';
+
+  totalBill = 0;
+  customTip = 0;
+  selectTip = 0;
+  noOfPeople = 1;
+  totalPerPerson = 0.0;
+  tipPerPerson = 0.0;
   resetSelect();
 });
