@@ -1,44 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Tip calculator app</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <title>Frontend Mentor | Tip calculator app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./app.js" defer></script>
 
-  Bill
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">
+        <h1>splitter</h1>
+        
+      </div>
+      <section>
+        <div class="section--left">
+          <h2>Bill</h2>
+          <input id="input__bill" type="number" />
+          <div class="section__tip">
+            <h2>Select Tip %</h2>
+            <div id="tipSelect" onchange="handleSelect()">
+              <button class="btn btn--tip">5%</button>
+              <button class="btn btn--tip">10%</button>
+              <button class="btn btn--tip">15%</button>
+              <button class="btn btn--tip">25%</button>
+              <button class="btn btn--tip">50%</button>
+              <input
+                id="input__custom"
+                type="number"
+                class="btn btn--custom"
+                placeholder="Custom"
+              />
+            </div>
+          </div>
+          <h2>Number of People</h2>
+          <input id="input__people" type="number" />
+        </div>
+        <div class="section__right">
+          <div>
+            <div class="section__bill">
+              <h2>
+                Total Amount
+                <span>/ person</span>
+              </h2>
+              <p class="price price__total">$0.00</p>
+            </div>
+            <div class="section__bill">
+              <h2>
+                Total Tip
+                <span>/ person</span>
+              </h2>
+              <p class="price price__tip">$0.00</p>
+            </div>
+          </div>
+          <button class="btn btn--reset">Reset</button>
+        </div>
+      </section>
+    </div>
 
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
-
-  Number of People
-
-  Tip Amount
-  / person
-
-  Total
-  / person
-
-  Reset
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+    <!-- <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="https://github.com/hriteek">Hriteek Bista</a>.
+    </div> -->
+  </body>
 </html>
